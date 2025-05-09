@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Создать Издателя</h1>
+    <h1>Создать Жанр</h1>
 
-    <form action="{{ route('publishers.store') }}" method="POST">
+    <form action="{{ route('admin.genres.store') }}" method="POST">
         @csrf
         <div class="mb-3">
             <label for="name" class="form-label">Название</label>

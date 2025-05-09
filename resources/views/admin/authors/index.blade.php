@@ -2,7 +2,7 @@
 
 @section('content')
     <h1>Авторы</h1>
-    <a href="{{ route('authors.create') }}" class="btn btn-success mb-3">Добавить Автора</a>
+    <a href="{{ route('admin.authors.create') }}" class="btn btn-success mb-3">Добавить Автора</a>
 
     <table class="table table-bordered">
         <thead>
@@ -19,7 +19,7 @@
                     <td>{{ $author->name }}</td>
                     <td>
                         <a href="{{ route('authors.edit', $author->id) }}" class="btn btn-warning btn-sm">Редактировать</a>
-                        <form action="{{ route('authors.destroy', $author->id) }}" method="POST" style="display:inline-block;">
+                        <form action="{{ route('admin.authors.destroy', $author->id) }}" method="POST" style="display:inline-block;">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger btn-sm" onclick="return confirm('Удалить автора?')">Удалить</button>

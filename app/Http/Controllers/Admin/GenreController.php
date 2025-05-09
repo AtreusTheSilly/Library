@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -11,12 +11,12 @@ class GenreController extends Controller
     public function index()
     {
         $genres = Genre::all();
-        return view('genres.index', compact('genres'));
+        return view('admin.genres.index', compact('genres'));
     }
 
     public function create()
     {
-        return view('genres.create');
+        return view('admin.genres.create');
     }
 
     public function store(Request $request)
@@ -27,12 +27,12 @@ class GenreController extends Controller
 
         Genre::create($request->all());
 
-        return redirect()->route('genres.index')->with('success', 'Жанр добавлен.');
+        return redirect()->route('admin.genres.index')->with('success', 'Жанр добавлен.');
     }
 
     public function edit(Genre $Genre)
     {
-        return view('genres.edit', compact('Genre'));
+        return view('admin.genres.edit', compact('Genre'));
     }
 
     public function update(Request $request, Genre $Genre)
@@ -43,12 +43,13 @@ class GenreController extends Controller
 
         $Genre->update($request->all());
 
-        return redirect()->route('genres.index')->with('success', 'Жанр обновлён.');
+        return redirect()->route('admin.genres.index')->with('success', 'Жанр обновлён.');
     }
 
     public function destroy(Genre $Genre)
     {
         $Genre->delete();
-        return redirect()->route('genres.index')->with('success', 'Жанр удален.');
+        return redirect()->route('admin.genres.index')->with('success', 'Жанр удален.');
     }
 }
+?>

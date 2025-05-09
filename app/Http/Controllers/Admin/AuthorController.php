@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -11,12 +11,12 @@ class AuthorController extends Controller
     public function index()
     {
         $authors = Author::all();
-        return view('authors.index', compact('authors'));
+        return view('admin.authors.index', compact('authors'));
     }
 
     public function create()
     {
-        return view('authors.create');
+        return view('admin.authors.create');
     }
 
     public function store(Request $request)
@@ -27,12 +27,12 @@ class AuthorController extends Controller
 
         Author::create($request->all());
 
-        return redirect()->route('authors.index')->with('success', 'Автор добавлен.');
+        return redirect()->route('admin.authors.index')->with('success', 'Автор добавлен.');
     }
 
     public function edit(Author $author)
     {
-        return view('authors.edit', compact('author'));
+        return view('admin.authors.edit', compact('author'));
     }
 
     public function update(Request $request, Author $author)
@@ -43,12 +43,13 @@ class AuthorController extends Controller
 
         $author->update($request->all());
 
-        return redirect()->route('authors.index')->with('success', 'Автор обновлен.');
+        return redirect()->route('admin.authors.index')->with('success', 'Автор обновлен.');
     }
 
     public function destroy(Author $author)
     {
         $author->delete();
-        return redirect()->route('authors.index')->with('success', 'Автор удален.');
+        return redirect()->route('admin.authors.index')->with('success', 'Автор удален.');
     }
 }
+?>

@@ -3,7 +3,7 @@
 @section('content')
     <h1>Редактировать Автора</h1>
 
-    <form action="{{ route('authors.update', $author->id) }}" method="POST">
+    <form action="{{ route('admin.authors.update', $author->id) }}" method="POST">
         @csrf
         @method('PUT')
         

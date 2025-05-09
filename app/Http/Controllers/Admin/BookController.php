@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -14,7 +14,7 @@ class BookController extends Controller
     public function index()
     {
         $books = Book::with(['author', 'genre', 'publisher'])->get();
-        return view('books.index', compact('books'));
+        return view('admin.books.index', compact('books'));
     }
 
     public function create()
@@ -22,7 +22,7 @@ class BookController extends Controller
         $authors = Author::all();
         $genres = Genre::all();
         $publishers = Publisher::all();
-        return view('books.create', compact('authors', 'genres', 'publishers'));
+        return view('admin.books.create', compact('authors', 'genres', 'publishers'));
     }
 
     public function store(Request $request)
@@ -36,7 +36,7 @@ class BookController extends Controller
 
         Book::create($request->all());
 
-        return redirect()->route('books.index')->with('success', 'Книга добавлена.');
+        return redirect()->route('admin.books.index')->with('success', 'Книга добавлена.');
     }
 
     public function edit(Book $book)
@@ -44,7 +44,7 @@ class BookController extends Controller
         $authors = Author::all();
         $genres = Genre::all();
         $publishers = Publisher::all();
-        return view('books.edit', compact('book', 'authors', 'genres', 'publishers'));
+        return view('admin.books.edit', compact('book', 'authors', 'genres', 'publishers'));
     }
 
     public function update(Request $request, Book $book)
@@ -58,12 +58,13 @@ class BookController extends Controller
 
         $book->update($request->all());
 
-        return redirect()->route('books.index')->with('success', 'Книга обновлена.');
+        return redirect()->route('admin.books.index')->with('success', 'Книга обновлена.');
     }
 
     public function destroy(Book $book)
     {
         $book->delete();
-        return redirect()->route('books.index')->with('success', 'Книга удалена.');
+        return redirect()->route('admin.books.index')->with('success', 'Книга удалена.');
     }
 }
+?>

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -11,12 +11,12 @@ class PublisherController extends Controller
     public function index()
     {
         $publishers = Publisher::all();
-        return view('publishers.index', compact('publishers'));
+        return view('admin.publishers.index', compact('publishers'));
     }
 
     public function create()
     {
-        return view('publishers.create');
+        return view('admin.publishers.create');
     }
 
     public function store(Request $request)
@@ -27,12 +27,12 @@ class PublisherController extends Controller
 
         Publisher::create($request->all());
 
-        return redirect()->route('publishers.index')->with('success', 'Издатель добавлен.');
+        return redirect()->route('admin.publishers.index')->with('success', 'Издатель добавлен.');
     }
 
     public function edit(Publisher $publisher)
     {
-        return view('publishers.edit', compact('publisher'));
+        return view('admin.publishers.edit', compact('publisher'));
     }
 
     public function update(Request $request, Publisher $publisher)
@@ -43,12 +43,13 @@ class PublisherController extends Controller
 
         $publisher->update($request->all());
 
-        return redirect()->route('publishers.index')->with('success', 'Издатель обновлен.');
+        return redirect()->route('admin.publishers.index')->with('success', 'Издатель обновлен.');
     }
 
     public function destroy(Publisher $publisher)
     {
         $publisher->delete();
-        return redirect()->route('publishers.index')->with('success', 'Издатель удален.');
+        return redirect()->route('admin.publishers.index')->with('success', 'Издатель удален.');
     }
 }
+?>
