@@ -10,7 +10,7 @@ class LibraryController extends Controller
     public function index()
     {
         $books = Book::with(['author', 'genre', 'publisher'])->get();
-        return view('library.index', compact('books'));
+        return view('user.index', compact('books'), ['layout' => 'layouts.user']);
     }
 }
 ?>

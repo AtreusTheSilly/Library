@@ -11,12 +11,12 @@ class GenreController extends Controller
     public function index()
     {
         $genres = Genre::all();
-        return view('admin.genres.index', compact('genres'));
+        return view('admin.genres.index', compact('genres'), ['layout' => 'layouts.admin']);
     }
 
     public function create()
     {
-        return view('admin.genres.create');
+        return view('admin.genres.create', ['layout' => 'layouts.admin']);
     }
 
     public function store(Request $request)
@@ -32,7 +32,7 @@ class GenreController extends Controller
 
     public function edit(Genre $Genre)
     {
-        return view('admin.genres.edit', compact('Genre'));
+        return view('admin.genres.edit', compact('Genre'), ['layout' => 'layouts.admin']);
     }
 
     public function update(Request $request, Genre $Genre)

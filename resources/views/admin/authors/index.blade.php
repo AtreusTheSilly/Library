@@ -18,7 +18,7 @@
                     <td>{{ $author->id }}</td>
                     <td>{{ $author->name }}</td>
                     <td>
-                        <a href="{{ route('authors.edit', $author->id) }}" class="btn btn-warning btn-sm">Редактировать</a>
+                        <a href="{{ route('admin.authors.edit', $author->id) }}" class="btn btn-warning btn-sm">Редактировать</a>
                         <form action="{{ route('admin.authors.destroy', $author->id) }}" method="POST" style="display:inline-block;">
                             @csrf
                             @method('DELETE')

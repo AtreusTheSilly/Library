@@ -11,12 +11,12 @@ class PublisherController extends Controller
     public function index()
     {
         $publishers = Publisher::all();
-        return view('admin.publishers.index', compact('publishers'));
+        return view('admin.publishers.index', compact('publishers'), ['layout' => 'layouts.admin']);
     }
 
     public function create()
     {
-        return view('admin.publishers.create');
+        return view('admin.publishers.create', ['layout' => 'layouts.admin']);
     }
 
     public function store(Request $request)
@@ -32,7 +32,7 @@ class PublisherController extends Controller
 
     public function edit(Publisher $publisher)
     {
-        return view('admin.publishers.edit', compact('publisher'));
+        return view('admin.publishers.edit', compact('publisher'), ['layout' => 'layouts.admin']);
     }
 
     public function update(Request $request, Publisher $publisher)
